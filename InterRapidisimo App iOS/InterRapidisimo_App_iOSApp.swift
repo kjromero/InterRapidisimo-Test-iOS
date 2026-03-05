@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct InterRapidisimo_App_iOSApp: App {
@@ -13,5 +14,6 @@ struct InterRapidisimo_App_iOSApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(DependencyContainer.shared.modelContainer)
     }
 }
