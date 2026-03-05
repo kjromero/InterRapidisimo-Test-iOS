@@ -15,7 +15,7 @@ struct LoginScreen: View {
                     headerView
                     Spacer()
                     ProgressView("Inicializando...")
-                        .tint(.interBlue)
+                        .tint(.interBlack)
                     Spacer()
                 }
 
@@ -39,7 +39,7 @@ struct LoginScreen: View {
                                     .foregroundStyle(.white)
                                     .frame(maxWidth: .infinity)
                                     .padding()
-                                    .background(Color.interBlue)
+                                    .background(Color.interBlack)
                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                             }
                             .padding(.horizontal)
@@ -93,11 +93,13 @@ struct LoginScreen: View {
 
     private var headerView: some View {
         ZStack {
-            Color.interBlue
+            Color.interBlack
             VStack(spacing: 8) {
-                Image(systemName: "shippingbox.fill")
-                    .font(.system(size: 50))
-                    .foregroundStyle(.white)
+                Image("Icon_app")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
                 Text("InterRapidísimo")
                     .font(.title.bold())
                     .foregroundStyle(.white)

@@ -13,17 +13,19 @@ struct HomeScreen: View {
             switch viewModel.uiState {
             case .loading:
                 ProgressView()
-                    .tint(.interBlue)
+                    .tint(.interBlack)
 
             case .ready(let user):
                 VStack(spacing: 0) {
                     // Header
                     ZStack {
-                        Color.interBlue
+                        Color.interBlack
                         VStack(spacing: 4) {
-                            Image(systemName: "person.circle.fill")
-                                .font(.system(size: 50))
-                                .foregroundStyle(.white)
+                            Image("Icon_app")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 70, height: 70)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
                             Text("Bienvenido")
                                 .font(.title2.bold())
                                 .foregroundStyle(.white)
@@ -65,7 +67,7 @@ struct HomeScreen: View {
                                     .foregroundStyle(.white)
                                     .frame(maxWidth: .infinity)
                                     .padding()
-                                    .background(Color.interBlue)
+                                    .background(Color.interBlack)
                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                                 }
 

@@ -11,7 +11,7 @@ struct TablasScreen: View {
             switch viewModel.uiState {
             case .loading:
                 ProgressView("Sincronizando tablas...")
-                    .tint(.interBlue)
+                    .tint(.interBlack)
 
             case .success(let tables):
                 List(tables, id: \.tableName) { table in
@@ -36,7 +36,7 @@ struct TablasScreen: View {
     private func tableRow(_ table: Table) -> some View {
         HStack(spacing: 0) {
             // Blue left accent
-            Color.interBlue
+            Color.interBlack
                 .frame(width: 4)
 
             VStack(alignment: .leading, spacing: 6) {
@@ -48,12 +48,12 @@ struct TablasScreen: View {
                     if let pk = table.primaryKey {
                         Label("PK: \(pk)", systemImage: "key.fill")
                             .font(.caption)
-                            .foregroundStyle(Color.interBlue)
+                            .foregroundStyle(Color.interBlack)
                     }
                     if let fields = table.fieldCount {
                         Label("Campos: \(fields)", systemImage: "number")
                             .font(.caption)
-                            .foregroundStyle(Color.interBlue)
+                            .foregroundStyle(Color.interBlack)
                     }
                 }
 

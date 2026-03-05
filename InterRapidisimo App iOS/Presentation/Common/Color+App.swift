@@ -23,8 +23,8 @@ extension Color {
         )
     }
 
-    static let interBlue = Color(hex: "#003876")
-    static let interRed = Color(hex: "#E30613")
+    static let interBlack = Color(hex: "#1C1B1F")
+    static let interRed = Color(hex: "#EC5800")
     static let interYellow = Color(hex: "#FFD100")
     static let interBackground = Color(hex: "#F5F5F5")
 }

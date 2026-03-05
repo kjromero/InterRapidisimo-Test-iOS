@@ -50,7 +50,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .tint(.interBlue)
+            .tint(.interBlack)
         }
     }
 }

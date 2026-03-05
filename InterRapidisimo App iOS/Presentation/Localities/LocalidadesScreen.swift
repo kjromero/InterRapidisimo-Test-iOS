@@ -11,7 +11,7 @@ struct LocalidadesScreen: View {
             switch viewModel.uiState {
             case .loading:
                 ProgressView("Cargando localidades...")
-                    .tint(.interBlue)
+                    .tint(.interBlack)
 
             case .success(let localities):
                 List(localities, id: \.cityAbbreviation) { locality in
@@ -40,7 +40,7 @@ struct LocalidadesScreen: View {
                 .foregroundStyle(.white)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 6)
-                .background(Color.interBlue)
+                .background(Color.interBlack)
                 .clipShape(RoundedRectangle(cornerRadius: 6))
 
             Text(locality.fullName)
