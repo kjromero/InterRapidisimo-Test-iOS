@@ -28,6 +28,7 @@ final class AuthRepositoryImpl: AuthRepository {
             try? modelContext.save()
             return .success(user)
         case .failure(let error):
+            print("THIS IS DE ERROR ON REPOSITORY \(error) ")
             return .failure(error)
         }
     }

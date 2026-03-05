@@ -1,8 +1,8 @@
 import Foundation
 
 struct LocalityDTO: Decodable {
-    let id: Int?
-    let typeId: Int?
+    let id: String?
+    let typeId: String?
     let name: String?
     let shortName: String?
     let fullName: String?
@@ -11,8 +11,8 @@ struct LocalityDTO: Decodable {
     let postalCode: String?
     let areaCode: String?
     let allowsPickup: Bool?
-    let maxPickupTime: String?
-    let minPickupTime: String?
+    let maxPickupTime: Int?
+    let minPickupTime: Int?
 
     enum CodingKeys: String, CodingKey {
         case id = "IdLocalidad"

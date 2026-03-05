@@ -70,10 +70,12 @@ final class InterAPIClient {
 
         do {
             let (data, response) = try await session.data(from: url)
+            print("RESPONSE:", response)
             if let httpResponse = response as? HTTPURLResponse,
                !(200...299).contains(httpResponse.statusCode) {
                 return .failure(errorMapper.map(statusCode: httpResponse.statusCode))
             }
+            print("LOCALITIES RAW RESPONSE:", String(data: data, encoding: .utf8) ?? "nil")
             let localities = try JSONDecoder().decode([LocalityDTO].self, from: data)
             return .success(localities)
         } catch is URLError {
@@ -101,19 +103,37 @@ final class InterAPIClient {
         request.setValue("PTO/BOGOTA/CUND/COL/OF PRINCIPAL - CRA 30 # 7-45", forHTTPHeaderField: "NombreCentroServicio")
         request.setValue("9", forHTTPHeaderField: "IdAplicativoOrigen")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "{}".data(using: .utf8)
 
+
+        let body = AuthRequestDTO(
+            Mac: "",
+            NomAplicacion: "Controller APP",
+            Password: "SW50ZXIyMDIx\n",
+            Path: "",
+            Usuario: "cGFtLm1lcmVkeTIx\n"
+        )
+        request.httpBody = try? JSONEncoder().encode(body)
+        print("URL:", request.url ?? "")
+        print("METHOD:", request.httpMethod ?? "")
+        print("HEADERS:", request.allHTTPHeaderFields ?? "")
+
+        if let body = request.httpBody {
+            print("BODY:", String(data: body, encoding: .utf8) ?? "")
+        }
         do {
             let (data, response) = try await session.data(for: request)
+            print("RESPONSE:", response)
             if let httpResponse = response as? HTTPURLResponse,
                !(200...299).contains(httpResponse.statusCode) {
                 return .failure(errorMapper.map(statusCode: httpResponse.statusCode))
             }
+            print("AUTH RAW RESPONSE:", String(data: data, encoding: .utf8) ?? "nil")
             let dto = try JSONDecoder().decode(AuthResponseDTO.self, from: data)
             return .success(dto)
         } catch is URLError {
             return .failure(.network)
         } catch {
+            print("AUTH DECODE ERROR:", error)
             return .failure(.unknown)
         }
     }

@@ -1,5 +1,9 @@
 import Foundation
 
 struct AuthRequestDTO: Encodable {
-    // Body is empty — credentials go in headers
+    let Mac: String
+    let NomAplicacion: String
+    let Password: String
+    let Path: String
+    let Usuario: String
 }

@@ -9,7 +9,7 @@ struct AuthResponseDTO: Decodable {
     let position: String?
     let applications: String?
     let locations: String?
-    let resultCode: String?
+    let resultCode: Int?
     let localityId: String?
     let localityName: String?
     let roleName: String?
